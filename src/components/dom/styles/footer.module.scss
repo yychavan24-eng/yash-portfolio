@@ -10,19 +10,30 @@
     padding-top: var(--layout-columns-gap);
     padding-bottom: var(--layout-columns-gap);
   }
+
   .linksContainer {
     padding-top: calc(var(--layout-columns-gap) * 4);
     @include mobile {
       padding-top: calc(var(--layout-columns-gap) * 1.5);
     }
-
     width: 100%;
+    
     > div {
       width: 100%;
     }
+
     .title {
-      color: var(--white);
+      color: var(--secondary-text);
       padding-bottom: var(--layout-columns-gap);
+    }
+
+    .identityItem {
+      color: var(--black);
+      font-size: 1.2vw;
+      line-height: 1.5;
+      @include mobile {
+        font-size: 4vw;
+      }
     }
 
     .linkTextContainer {
@@ -36,13 +47,15 @@
         display: flex;
         align-items: center;
         position: relative;
+        color: var(--black);
+        
         > svg {
           height: 0.75vw;
           width: 0.75vw;
           top: auto;
           overflow: unset;
-          fill: var(--white);
-          stroke: var(--white);
+          fill: var(--black);
+          stroke: var(--black);
           @include mobile {
             height: 2vw;
             width: 2vw;
@@ -71,110 +84,81 @@
     }
   }
 
-  .emailContaineer {
+  // Column definitions to align with grid-column: 3 / 15 inset
+  .identityColumn {
+    grid-column: 3 / 7;
     @include mobile {
-      grid-column: 1 / 7;
-      padding-top: var(--layout-columns-gap);
+      grid-column: 2 / 6;
     }
+  }
 
-    padding-top: calc(var(--layout-columns-gap) * 4);
-    width: min-content;
-    grid-column: 9 / 17;
-    .workWithMe {
-      color: var(--white);
+  .navigationColumn {
+    grid-column: 7 / 11;
+    @include mobile {
+      grid-column: 2 / 6;
     }
-    .link {
-      color: var(--white);
-      font-size: 2.5vw;
-      line-height: 4.1vw;
-      position: relative;
-      white-space: nowrap;
+  }
 
-      cursor: pointer;
-      .email {
-        color: var(--white);
+  .contactColumn {
+    grid-column: 11 / 15;
+    @include mobile {
+      grid-column: 2 / 6;
+    }
+  }
+
+  .bottomBar {
+    padding-top: calc(var(--layout-columns-gap) * 3);
+    padding-bottom: calc(var(--layout-columns-gap) * 3);
+    grid-column: 3 / 15;
+    @include mobile {
+      grid-column: 2 / 6;
+      padding-top: calc(var(--layout-columns-gap) * 2);
+      padding-bottom: calc(var(--layout-columns-gap) * 2);
+    }
+    
+    .copyrightText {
+      color: var(--secondary-text);
+      font-size: 1vw;
+      text-align: right;
+      @include mobile {
+        font-size: 3vw;
+        text-align: left;
       }
     }
-    .link::before,
-    .link::after {
-      position: absolute !important;
-      width: 100%;
-      height: 1px;
-      top: 100%;
-      left: 0;
-      pointer-events: none;
-    }
-    .link::before {
-      content: '';
-      /* show by default */
-    }
-    .link:hover path {
-      // stroke-dashoffset: 0;
-      // transition-timing-function: cubic-bezier(0.8, 1, 0.7, 1);
-      // transition-duration: 0.3s;
-    }
-    .link:hover .linkGraphic {
-      transform: translate3d(-65.5%, 0, 0);
-    }
-    .linkGraphic {
-      position: absolute !important;
-      left: 0;
-      pointer-events: none;
-      fill: none;
-      stroke: var(--white);
-      bottom: 0;
-      stroke-width: 0.03em;
-      transition: transform 0.7s;
-      transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
-    }
   }
 
-  .middleText {
-    padding-top: calc(var(--layout-columns-gap) * 0.5);
-  }
-  .middleContainer {
+  .yashWordmark {
     @include mobile {
-      grid-column: 1 / 7 !important;
-      padding-top: var(--layout-columns-gap);
-    }
-
-    > span > span > span {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  div {
-    color: var(--white);
-  }
-
-  .giats {
-    @include mobile {
-      grid-column: 1 / 6;
+      grid-column: 1 / 7;
       font-size: 22.2vw;
       line-height: 17.428vw;
+      transform: none;
     }
     align-self: flex-end;
     grid-column: 1 / 13;
 
-    font-size: 15.2vw;
-    line-height: 12.628vw;
+    font-size: 18.2vw;
+    line-height: 14.628vw;
     transform: translate(-0.3vw, 2.1vw);
-    color: var(--white);
+    color: var(--black);
+    
     > span {
       display: inherit;
     }
   }
+
   .goToTop {
     position: relative;
-
     @include mobile {
       grid-column: 6 / 7;
+      margin-bottom: var(--layout-columns-gap);
     }
     align-self: flex-end;
     justify-self: flex-end;
-    grid-column: 13 / 17;
+    grid-column: 14 / 17;
   }
 }
+
 .circleButton {
   z-index: 2;
   box-shadow:
@@ -186,7 +170,7 @@
   }
   width: 4vw;
   height: 4vw;
-  background-color: var(--white);
+  background-color: var(--black);
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -204,8 +188,8 @@
     left: 1.25vw;
     height: 1.5vw;
     width: 1.5vw;
-    fill: var(--black);
-    stroke: var(--black);
+    fill: var(--white);
+    stroke: var(--white);
     transform: translateY(0vw) rotate(180deg);
   }
 

@@ -1,0 +1,100 @@
+@import '@src/styles/functions';
+
+.root {
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--layout-columns-gap) * 8);
+  padding-bottom: calc(var(--layout-columns-gap) * 8);
+  color: var(--black);
+
+  .titleContainer {
+    grid-column: 3 / 15;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(var(--layout-columns-gap) * 4);
+
+    @include mobile {
+      grid-column: 2 / 6;
+      margin-bottom: calc(var(--layout-columns-gap) * 2);
+    }
+  }
+
+  .logContainer {
+    grid-column: 3 / 15;
+    display: flex;
+    flex-direction: column;
+
+    @include mobile {
+      grid-column: 2 / 6;
+    }
+
+    // Micro-interaction: quiet non-hovered items
+    @media (hover: hover) {
+      &:hover .logEntry {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .logEntry {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.4s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1 !important;
+      }
+    }
+
+    .entryHeader {
+      display: flex;
+      flex-direction: row;
+      gap: calc(var(--layout-columns-gap) * 1);
+      align-items: baseline;
+      margin-bottom: calc(var(--layout-columns-gap) * 0.5);
+      
+      @include mobile {
+        flex-direction: column;
+        gap: calc(var(--layout-columns-gap) * 0.25);
+      }
+
+      .entryId {
+        font-family: var(--font-primary);
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--secondary-text, #A0A0A0);
+        min-width: 40px;
+      }
+      
+      .entryTitle {
+        text-transform: uppercase;
+        color: var(--black);
+        letter-spacing: 0.02em;
+        flex: 1;
+      }
+
+      .entryDescription {
+        color: var(--secondary-text, #A0A0A0);
+        font-weight: 500;
+        text-align: right;
+
+        @include mobile {
+          text-align: left;
+        }
+      }
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: var(--black);
+      margin-bottom: calc(var(--layout-columns-gap) * 1.5);
+      opacity: 0.15;
+      
+      @include mobile {
+        margin-bottom: calc(var(--layout-columns-gap) * 1);
+      }
+    }
+  }
+}

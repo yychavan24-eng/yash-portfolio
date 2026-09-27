@@ -16,23 +16,19 @@ import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 
 const seo = {
-  title: 'Giats - Projects',
-  description: 'Explore my portfolio to see a range of frontend projects, from responsive websites to web applications. Discover my work with React, Nextjs, React three fiber, Electron and more.',
+  title: 'Yash Chavan - Projects',
+  description: 'Explore my portfolio to see a range of projects, from intelligent systems to web applications. Discover my work with AI, software engineering, and experimental technology.',
   keywords: [
-    'Giats Projects',
+    'Yash Chavan Projects',
     'Portfolio Showcase',
-    'Frontend Development Examples',
-    'Web Design Portfolio',
-    'Responsive Web Projects',
+    'Mechatronics Engineer',
+    'AI Projects',
+    'Intelligent Systems',
     'Web Applications Portfolio',
-    'HTML and CSS Projects',
-    'JavaScript Development',
+    'Machine Learning Projects',
     'React Work',
-    'Next.js Projects',
-    'React Three Fiber Projects',
-    'Electron Projects',
-    'Professional Web Development',
-    'Evangelos Giatsidis Projects',
+    'Software Engineering',
+    'Experimental Technology',
   ],
 };
 

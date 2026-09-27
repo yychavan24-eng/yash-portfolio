@@ -12,6 +12,7 @@ function About() {
   const isMobile = useIsMobile();
   const rootRef = useRef();
   const animatedImageRef = useRef();
+  const photoContainerRef = useRef();
 
   const setupScrollAnimation = () => {
     const ctx = gsap.context(() => {
@@ -29,6 +30,23 @@ function About() {
             invalidateOnRefresh: true,
           },
         });
+
+        gsap.fromTo(
+          photoContainerRef.current,
+          { yPercent: -5 },
+          {
+            yPercent: 5,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: rootRef.current,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+              scroller: document?.querySelector('main'),
+              invalidateOnRefresh: true,
+            },
+          },
+        );
       }
     });
 
@@ -41,8 +59,8 @@ function About() {
   }, [isMobile]);
 
   const renderImageContainer = () => (
-    <div className={styles.imageContainer}>
-      <Image priority src="/giats/front.webp" sizes="100%" fill alt="Evangelos Giatsidis" />
+    <div ref={photoContainerRef} className={styles.imageContainer}>
+      <Image priority src="/images/yash-chavan.jpeg" sizes="100%" fill alt="Yash Chavan" style={{ objectFit: 'cover' }} />
     </div>
   );
 
@@ -51,7 +69,7 @@ function About() {
       <div className={clsx(styles.nameContainer, 'layout-block-inner')}>
         <AppearTitle>
           <h1 className={clsx('h1', 'medium')}>Hey, My name&apos;s</h1>
-          <h1 className={clsx('h1', 'medium')}>Evangelos Giatsidis!</h1>
+          <h1 className={clsx('h1', 'medium')}>Yash Chavan!</h1>
         </AppearTitle>
       </div>
 
@@ -59,28 +77,28 @@ function About() {
         {isMobile ? renderImageContainer() : null}
         <div className={clsx(styles.descWrapper)} ref={animatedImageRef}>
           <AppearTitle>
-            <div className="p-l">“My solo learning journey as a self-taught</div>
-            <div className="p-l">developer empowers me to solve problems</div>
-            <div className="p-l">creatively and efficiently, supporting the</div>
-            <div className="p-l">successful completion of your project goals”</div>
+            <div className="p-l">“I am a Mechatronics Engineering student</div>
+            <div className="p-l">and developer focused on building</div>
+            <div className="p-l">intelligent systems and exploring</div>
+            <div className="p-l">experimental technology.”</div>
           </AppearTitle>
         </div>
         {!isMobile ? renderImageContainer() : null}
         <div className={clsx(styles.descWrapperBottom)}>
           {!isMobile ? (
             <AppearTitle key="desktop-descWrapperBottom">
-              <h6 className="h6">A passionate front-end developer hailing from Greece.</h6>
-              <h6 className="h6">With a strong eye for design and a dedication to</h6>
-              <h6 className="h6">creating seamless user experiences. I specialize in</h6>
-              <h6 className="h6">bringing web applications to life with clean and efficient</h6>
-              <h6 className="h6">code.</h6>
+              <h6 className="h6">I explore the intersection of software and hardware</h6>
+              <h6 className="h6">through Mechatronics Engineering. My work spans AI</h6>
+              <h6 className="h6">agents, machine learning, and intelligent systems,</h6>
+              <h6 className="h6">driven by a hands-on approach to experimental technology.</h6>
+              <h6 className="h6">I build to understand and engineer to solve.</h6>
             </AppearTitle>
           ) : (
             <AppearTitle key="mobile-descWrapperBottom">
-              <h6 className="h6"> A passionate front-end developer hailing from Greece. With a</h6>
-              <h6 className="h6">strong eye for design and a dedication to creating seamless</h6>
-              <h6 className="h6">user experiences. I specialize in bringing web applications to life</h6>
-              <h6 className="h6">with clean and efficient code.</h6>
+              <h6 className="h6"> I explore the intersection of software and hardware through</h6>
+              <h6 className="h6">Mechatronics Engineering. My work spans AI agents, machine</h6>
+              <h6 className="h6">learning, and intelligent systems, driven by a hands-on</h6>
+              <h6 className="h6">approach to experimental technology. I build to understand.</h6>
             </AppearTitle>
           )}
           <div className={clsx(styles.buttonContainer)}>

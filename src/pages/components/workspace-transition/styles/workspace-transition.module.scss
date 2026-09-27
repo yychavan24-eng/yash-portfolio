@@ -1,0 +1,62 @@
+@import '@src/styles/functions';
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--layout-columns-gap) * 8) 0 calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  .gridOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: calc(100vw / 12) calc(100vw / 12);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0; // Animates in via JS
+    
+    @include mobile {
+      background-size: calc(100vw / 6) calc(100vw / 6);
+    }
+  }
+
+  .transitionWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: calc(var(--layout-columns-gap) * 2);
+
+    .architecturalLine {
+      width: 1px;
+      height: 120px;
+      background-color: var(--black);
+      opacity: 0.2;
+      
+      @include mobile {
+        height: 80px;
+      }
+    }
+
+    .textContainer {
+      text-align: center;
+      
+      .marker {
+        font-family: var(--font-primary);
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: var(--black);
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -10,10 +10,16 @@ import projects from '@src/constants/projects';
 import styles from '@src/pages/components/projects/styles/projects.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
+import useScroll from '@src/hooks/useScroll';
 import { useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
+import VaultVisual from './components/VaultVisual';
+import VoidVisual from './components/VoidVisual';
+import OmnipresenceVisual from './components/OmnipresenceVisual';
+import ChimeraVisual from './components/ChimeraVisual';
+import AtlasVisual from './components/AtlasVisual';
 
 function Projects() {
   const isMobile = useIsMobile();
@@ -22,8 +28,9 @@ function Projects() {
 
   const rootRef = useRef();
   const projectRefs = useRef([]);
+  const imageRefs = useRef([]);
 
-  const newProjects = [projects[0], projects[1], projects[4]];
+  const newProjects = projects;
 
   const setupProjectAnimations = () => {
     const ctx = gsap.context(() => {
@@ -58,11 +65,35 @@ function Projects() {
     return () => ctx.kill();
   }, [isLoading, windowSize.height]);
 
+  useScroll(
+    (e) => {
+      if (!isMobile) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        const v = Math.abs(e.velocity || 0);
+        const scaleAmount = 1 + Math.min(v * 0.0015, 0.03); // max 1.03
+
+        imageRefs.current.forEach((imgRef) => {
+          if (imgRef) {
+            gsap.to(imgRef, {
+              scale: scaleAmount,
+              duration: 0.5,
+              ease: 'power2.out',
+              overwrite: 'auto',
+            });
+          }
+        });
+      }
+    },
+    [isMobile],
+  );
+
   return (
     <>
       <section className={clsx(styles.titleContainer, 'layout-grid-inner')}>
         <h1 className={clsx(styles.title, 'h1')}>
-          <AppearByWords>Selected Projects</AppearByWords>
+          <AppearByWords>Flagship Projects</AppearByWords>
         </h1>
       </section>
       <section ref={rootRef} className={clsx(styles.root, 'layout-block-inner')}>
@@ -89,12 +120,34 @@ function Projects() {
                     <h3 className="h3">{project.title}</h3>
                   </div>
                   <div className={styles.imageContainer}>
-                    <Image src={project.img} fill sizes="100%" alt={project.title} />
+                    {project.id === 'chimera' ? (
+                      <ChimeraVisual src={project.img} />
+                    ) : project.id === 'atlas' ? (
+                      <AtlasVisual src={project.img} />
+                    ) : project.id === 'omnipresence' ? (
+                      <OmnipresenceVisual src={project.img} />
+                    ) : project.id === 'void' ? (
+                      <VoidVisual src={project.img} />
+                    ) : project.id === 'vaultos' ? (
+                      <VaultVisual src={project.img} />
+                    ) : (
+                      <Image src={project.img} fill sizes="100%" alt={project.title} />
+                    )}
                   </div>
                 </div>
               </div>
               <div ref={(el) => (projectRefs.current[index] = el)} className={styles.canvas}>
-                <Image priority className={index === 0 ? styles.firstCard : index === newProjects.length - 1 ? styles.lastCard : undefined} src={project.img} fill sizes="100%" alt={project.title} />
+                <div ref={(el) => (imageRefs.current[index] = el)} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+                  <Image
+                    priority
+                    className={index === 0 ? styles.firstCard : index === newProjects.length - 1 ? styles.lastCard : undefined}
+                    src={project.img}
+                    fill
+                    sizes="100%"
+                    alt={project.title}
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
               </div>
             </Link>
           ))}

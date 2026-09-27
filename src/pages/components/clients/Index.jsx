@@ -51,12 +51,12 @@ function Clients() {
   return (
     <section ref={rootRef} className={clsx(styles.root, 'layout-grid-inner')}>
       <h1 className={clsx(styles.sectionTitle, 'h1')}>
-        <AppearByWords>Clients</AppearByWords>
+        <AppearByWords>Technical Journey</AppearByWords>
       </h1>
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>2024</AppearTitle>
+          <AppearTitle>01</AppearTitle>
         </div>
       ) : null}
       <div
@@ -71,17 +71,14 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Company 1</h4>
+            <h4 className={clsx('h4', 'bold')}>MECHATRONICS</h4>
           </AppearTitle>
           <AppearTitle>
-            <div className="p-l">Lorem ipsum dolor sit amet, consectetur</div>
-            <div className="p-l">adipiscing elit. Sed do eiusmod tempor</div>
-            <div className="p-l">incididunt ut labore et dolore magna aliqua.</div>
-            <div className="p-l">Ut enim ad minim veniam, quis nostrud</div>
-            <div className="p-l">exercitation ullamco laboris nisi ut aliquip</div>
-            <div className="p-l">ex ea commodo consequat. Duis aute irure</div>
-            <div className="p-l">dolor in reprehenderit in voluptate velit</div>
-            <div className="p-l">esse cillum dolore eu fugiat nulla pariatur.</div>
+            <div className="p-l">Engineering foundation and</div>
+            <div className="p-l">exploration across software</div>
+            <div className="p-l">and hardware. Building</div>
+            <div className="p-l">physical and digital prototypes</div>
+            <div className="p-l">to understand complex systems.</div>
           </AppearTitle>
         </div>
       ) : null}
@@ -95,20 +92,17 @@ function Clients() {
             className={styles.firstText}
           >
             <AppearTitle>
-              <h6 className="h6">2024</h6>
+              <h6 className="h6">01</h6>
             </AppearTitle>
             <AppearTitle>
-              <h4 className={clsx('h4', 'bold', styles.title)}>Company 1</h4>
+              <h4 className={clsx('h4', 'bold', styles.title)}>MECHATRONICS</h4>
             </AppearTitle>
             <AppearTitle>
-              <div className="p-l">Lorem ipsum dolor sit amet, consectetur</div>
-              <div className="p-l">adipiscing elit. Sed do eiusmod tempor</div>
-              <div className="p-l">incididunt ut labore et dolore magna aliqua.</div>
-              <div className="p-l">Ut enim ad minim veniam, quis nostrud</div>
-              <div className="p-l">exercitation ullamco laboris nisi ut aliquip</div>
-              <div className="p-l">ex ea commodo consequat. Duis aute irure</div>
-              <div className="p-l">dolor in reprehenderit in voluptate velit</div>
-              <div className="p-l">esse cillum dolore eu fugiat nulla pariatur.</div>
+              <div className="p-l">Engineering foundation and</div>
+              <div className="p-l">exploration across software</div>
+              <div className="p-l">and hardware. Building</div>
+              <div className="p-l">physical and digital prototypes</div>
+              <div className="p-l">to understand complex systems.</div>
             </AppearTitle>
           </div>
         </>
@@ -117,7 +111,7 @@ function Clients() {
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>2023</AppearTitle>
+          <AppearTitle>02</AppearTitle>
         </div>
       ) : null}
       <div
@@ -132,17 +126,14 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Company 2</h4>
+            <h4 className={clsx('h4', 'bold')}>AI & SYSTEMS</h4>
           </AppearTitle>
           <AppearTitle>
-            <div className="p-l">Lorem ipsum dolor sit amet, consectetur</div>
-            <div className="p-l">adipiscing elit. Sed do eiusmod tempor</div>
-            <div className="p-l">incididunt ut labore et dolore magna aliqua.</div>
-            <div className="p-l">Ut enim ad minim veniam, quis nostrud</div>
-            <div className="p-l">exercitation ullamco laboris nisi ut aliquip</div>
-            <div className="p-l">ex ea commodo consequat. Duis aute irure</div>
-            <div className="p-l">dolor in reprehenderit in voluptate velit</div>
-            <div className="p-l">esse cillum dolore eu fugiat nulla pariatur.</div>
+            <div className="p-l">Exploring machine learning,</div>
+            <div className="p-l">LLMs, AI agents, and intelligent</div>
+            <div className="p-l">system design. Developing</div>
+            <div className="p-l">scalable solutions leveraging</div>
+            <div className="p-l">modern artificial intelligence.</div>
           </AppearTitle>
         </div>
       ) : null}
@@ -155,20 +146,17 @@ function Clients() {
             className={styles.secondText}
           >
             <AppearTitle>
-              <h6 className="h6">2023</h6>
+              <h6 className="h6">02</h6>
             </AppearTitle>
             <AppearTitle>
-              <h4 className={clsx('h4', 'bold', styles.title)}>Company 2</h4>
+              <h4 className={clsx('h4', 'bold', styles.title)}>AI & SYSTEMS</h4>
             </AppearTitle>
             <AppearTitle>
-              <div className="p-l">Lorem ipsum dolor sit amet, consectetur</div>
-              <div className="p-l">adipiscing elit. Sed do eiusmod tempor</div>
-              <div className="p-l">incididunt ut labore et dolore magna aliqua.</div>
-              <div className="p-l">Ut enim ad minim veniam, quis nostrud</div>
-              <div className="p-l">exercitation ullamco laboris nisi ut aliquip</div>
-              <div className="p-l">ex ea commodo consequat. Duis aute irure</div>
-              <div className="p-l">dolor in reprehenderit in voluptate velit</div>
-              <div className="p-l">esse cillum dolore eu fugiat nulla pariatur.</div>
+              <div className="p-l">Exploring machine learning,</div>
+              <div className="p-l">LLMs, AI agents, and intelligent</div>
+              <div className="p-l">system design. Developing</div>
+              <div className="p-l">scalable solutions leveraging</div>
+              <div className="p-l">modern artificial intelligence.</div>
             </AppearTitle>
           </div>
           <div className={styles.fourthEmpty} />
@@ -177,7 +165,7 @@ function Clients() {
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>2021</AppearTitle>
+          <AppearTitle>03</AppearTitle>
         </div>
       ) : null}
       <div
@@ -192,17 +180,14 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Company 3</h4>
+            <h4 className={clsx('h4', 'bold')}>SOFTWARE DEV</h4>
           </AppearTitle>
           <AppearTitle>
-            <div className="p-l">Lorem ipsum dolor sit amet, consectetur</div>
-            <div className="p-l">adipiscing elit. Sed do eiusmod tempor</div>
-            <div className="p-l">incididunt ut labore et dolore magna aliqua.</div>
-            <div className="p-l">Ut enim ad minim veniam, quis nostrud</div>
-            <div className="p-l">exercitation ullamco laboris nisi ut aliquip</div>
-            <div className="p-l">ex ea commodo consequat. Duis aute irure</div>
-            <div className="p-l">dolor in reprehenderit in voluptate velit</div>
-            <div className="p-l">esse cillum dolore eu fugiat nulla pariatur.</div>
+            <div className="p-l">Building applications, developer</div>
+            <div className="p-l">tools, and experimental systems.</div>
+            <div className="p-l">Learning through hackathons,</div>
+            <div className="p-l">competitions, and open-source</div>
+            <div className="p-l">contributions.</div>
           </AppearTitle>
         </div>
       ) : null}
@@ -216,20 +201,17 @@ function Clients() {
             className={styles.thirdText}
           >
             <AppearTitle>
-              <h6 className="h6">2021</h6>
+              <h6 className="h6">03</h6>
             </AppearTitle>
             <AppearTitle>
-              <h4 className={clsx('h4', 'bold', styles.title)}>Company 3</h4>
+              <h4 className={clsx('h4', 'bold', styles.title)}>SOFTWARE DEV</h4>
             </AppearTitle>
             <AppearTitle>
-              <div className="p-l">Lorem ipsum dolor sit amet, consectetur</div>
-              <div className="p-l">adipiscing elit. Sed do eiusmod tempor</div>
-              <div className="p-l">incididunt ut labore et dolore magna aliqua.</div>
-              <div className="p-l">Ut enim ad minim veniam, quis nostrud</div>
-              <div className="p-l">exercitation ullamco laboris nisi ut aliquip</div>
-              <div className="p-l">ex ea commodo consequat. Duis aute irure</div>
-              <div className="p-l">dolor in reprehenderit in voluptate velit</div>
-              <div className="p-l">esse cillum dolore eu fugiat nulla pariatur.</div>
+              <div className="p-l">Building applications, developer</div>
+              <div className="p-l">tools, and experimental systems.</div>
+              <div className="p-l">Learning through hackathons,</div>
+              <div className="p-l">competitions, and open-source</div>
+              <div className="p-l">contributions.</div>
             </AppearTitle>
           </div>
         </>

@@ -6,21 +6,19 @@ import Process from '@src/pages/about/components/process/Process';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'Giats - About',
-  description: 'Learn about my journey, values, and commitment to quality web and app solutions.',
+  title: 'Yash Chavan - About',
+  description: 'Learn about my journey, values, and commitment to building intelligent systems.',
   keywords: [
-    'Giats',
-    'About Evangelos Giatsidis',
+    'Yash Chavan',
+    'About Yash Chavan',
     'About me',
-    'Frontend Developer Journey',
-    'Web Developer Story',
+    'Mechatronics Engineer',
+    'Developer Story',
     'Professional Web Development',
     'Frontend Development Expertise',
-    'Web Design Skills',
-    'Web Development Services',
-    'Web Design Expertise',
+    'Machine Learning',
+    'AI Services',
     'Developer Profile',
-    'Quality Web Solutions',
   ],
 };
 function Page() {

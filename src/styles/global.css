@@ -47,10 +47,10 @@
 }
 
 .color-change {
-  color: rgba(40, 40, 43, 0.1) !important;
+  color: rgba(241, 241, 241, 0.1) !important;
 }
 .fill-change {
-  fill: rgba(40, 40, 43, 0.1) !important;
+  fill: rgba(241, 241, 241, 0.1) !important;
 }
 #menu,
 main,

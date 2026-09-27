@@ -11,6 +11,7 @@
   width: 100%;
   pointer-events: none;
   scale: 1;
+  color: var(--black);
   .innerHeader {
     height: 3.1vw;
     @include mobile {

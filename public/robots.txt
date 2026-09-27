@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://giats.me/
+Host: https://yash-portfolio.vercel.app/
 
 # Sitemaps
-Sitemap: https://giats.me/sitemap.xml
+Sitemap: https://yash-portfolio.vercel.app/sitemap.xml

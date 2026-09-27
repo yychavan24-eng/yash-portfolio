@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://giats.me/',
+  siteUrl: 'https://yash-portfolio.vercel.app/',
   generateRobotsTxt: true, // (optional)
   generateIndexSitemap: false,
 };

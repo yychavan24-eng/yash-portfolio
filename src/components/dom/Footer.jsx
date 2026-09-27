@@ -1,28 +1,35 @@
 import AppearTitle from '@src/components/animationComponents/appearTitle/Index';
-import Link from 'next/link';
+import clsx from 'clsx';
 import LinkText from '@src/components/animationComponents/linkText/Index';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import footerLinks from '@src/components/dom/navbar/constants/footerLinks';
 import gsap from 'gsap';
-import menuLinks from '@src/components/dom/navbar/constants/menuLinks';
 import styles from '@src/components/dom/styles/footer.module.scss';
-import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
 import { useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 
-const Time = dynamic(() => import('@src/components/dom/Time'), { ssr: false });
 const GoTop = dynamic(() => import('@src/components/dom/GoTop'), { ssr: false });
 
+const yashNavLinks = [
+  { title: 'HOME', href: '/' },
+  { title: 'ABOUT', href: '/#about' },
+  { title: 'JOURNEY', href: '/#journey' },
+  { title: 'PROJECTS', href: '/#projects' },
+  { title: 'LAB', href: '/#lab' },
+  { title: 'CONTACT', href: '/#contact' },
+];
+
 function Footer() {
-  const isMobile = useIsMobile();
   const footerRef = useRef();
   const [isLoading] = useStore(useShallow((state) => [state.isLoading]));
   const windowSize = useWindowSize();
+
+  const github = footerLinks.find((link) => link.title.toLowerCase() === 'github');
+  const linkedin = footerLinks.find((link) => link.title.toLowerCase() === 'linkedin');
 
   useIsomorphicLayoutEffect(() => {
     if (!isLoading) {
@@ -67,10 +74,20 @@ function Footer() {
 
   return (
     <section ref={footerRef} className={clsx(styles.root, 'layout-grid-inner')} role="contentinfo">
-      <div style={{ gridColumn: isMobile ? '1 / 3' : '1 / 5' }} className={styles.linksContainer}>
+      {/* IDENTITY COLUMN */}
+      <div className={clsx(styles.linksContainer, styles.identityColumn)}>
         <AppearTitle isFooter>
-          <h6 className={clsx(styles.title, 'h6')}>Sitemap</h6>
-          {menuLinks.slice(0, -1).map((link) => (
+          <h6 className={clsx(styles.title, 'h6')}>IDENTITY</h6>
+          <div className={styles.identityItem}>YASH CHAVAN</div>
+          <div className={styles.identityItem}>MECHATRONICS ENGINEER & DEVELOPER</div>
+        </AppearTitle>
+      </div>
+
+      {/* NAVIGATION COLUMN */}
+      <div className={clsx(styles.linksContainer, styles.navigationColumn)}>
+        <AppearTitle isFooter>
+          <h6 className={clsx(styles.title, 'h6')}>NAVIGATION</h6>
+          {yashNavLinks.map((link) => (
             <div key={link.title} className={styles.linkTextContainer}>
               <LinkText className={styles.linkText} title={link.title} href={link.href}>
                 <span className="footer">{link.title}</span>
@@ -79,60 +96,45 @@ function Footer() {
           ))}
         </AppearTitle>
       </div>
-      <div style={{ gridColumn: isMobile ? '3 / 7' : '5 / 9' }} className={styles.linksContainer}>
+
+      {/* CONTACT COLUMN */}
+      <div className={clsx(styles.linksContainer, styles.contactColumn)}>
         <AppearTitle isFooter>
-          <h6 className={clsx(styles.title, 'h6')}>Follow me</h6>
-          {footerLinks.map((link) => (
-            <div key={link.title} className={styles.linkTextContainer}>
-              <LinkText target className={styles.linkText} title={link.title} href={link.href}>
-                <span className="footer">{link.title}</span>
+          <h6 className={clsx(styles.title, 'h6')}>SOCIAL</h6>
+          <div className={styles.linkTextContainer}>
+            <LinkText className={styles.linkText} title="EMAIL" href="mailto:yash.chavan@gmail.com">
+              <span className="footer">EMAIL</span>
+            </LinkText>
+          </div>
+          {github && (
+            <div className={styles.linkTextContainer}>
+              <LinkText target className={styles.linkText} title="GITHUB" href={github.href}>
+                <span className="footer">GITHUB</span>
               </LinkText>
             </div>
-          ))}
-        </AppearTitle>
-      </div>
-      <div className={styles.emailContaineer}>
-        <AppearTitle isFooter>
-          <h4 className={clsx(styles.workWithMe, 'h4')}>Work With Me:</h4>
-          <div>
-            <div className={styles.link}>
-              <Link aria-label="Send email" scroll={false} href="mailto:vaggelisgiats@gmail.com">
-                <h4 className={clsx(styles.email, 'h4')}>vaggelisgiats@gmail.com</h4>
-              </Link>
-              {/* class="link__graphic link__graphic--slide" */}
-              <svg className={clsx(styles.linkGraphic)} width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
-              </svg>
+          )}
+          {linkedin && (
+            <div className={styles.linkTextContainer}>
+              <LinkText target className={styles.linkText} title="LINKEDIN" href={linkedin.href}>
+                <span className="footer">LINKEDIN</span>
+              </LinkText>
             </div>
-          </div>
+          )}
         </AppearTitle>
       </div>
 
-      <div className={styles.middleContainer} style={{ gridColumn: '1 / 9' }}>
+      {/* BOTTOM BAR / COPYRIGHT */}
+      <div className={styles.bottomBar}>
         <AppearTitle isFooter>
-          <div className="p-x">Based in Thessaloniki, Greece</div>
-          <div className={clsx('p-x', styles.middleText)}>
-            Current Time: <Time />
-          </div>
+          <div className={styles.copyrightText}>© {new Date().getFullYear()} YASH CHAVAN</div>
         </AppearTitle>
       </div>
 
-      <div className={styles.middleContainer} style={{ gridColumn: '9 / 13' }}>
-        <AppearTitle isFooter>
-          <div className="p-x">Availability</div>
-          <div className={clsx('p-x', styles.middleText)}>Currently available for limited projects</div>
-        </AppearTitle>
-      </div>
-      <div className={styles.middleContainer} style={{ gridColumn: '13 / 17', textAlign: isMobile ? 'left' : 'right' }}>
-        <AppearTitle isFooter>
-          <div className="p-x">© 2025 · Evangelos Giatsidis</div>
-          <div className={clsx('p-x', styles.middleText)}>All Rights Reserved</div>
-        </AppearTitle>
+      {/* GIANT WORDMARK */}
+      <div className={styles.yashWordmark}>
+        <span>YASH</span>
       </div>
 
-      <div className={styles.giats}>
-        <span>GIATS</span>
-      </div>
       <div className={styles.goToTop}>
         <GoTop />
       </div>

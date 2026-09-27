@@ -52,7 +52,7 @@ function Hero() {
       </header>
       <div className={styles.wrapper}>
         <div ref={heroImageRef} className={styles.imageContainer}>
-          <Image priority quality={100} src="/giats/back.webp" sizes="100%" fill alt="Evangelos Giatsidis Back" />
+          <Image priority quality={100} src="/images/yash-chavan.jpeg" sizes="100%" fill alt="Yash Chavan" style={{ objectFit: 'cover' }} />
         </div>
       </div>
     </section>

@@ -1,12 +1,14 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import FloatingMeshes from '@src/pages/components/home/components/floatingMeshes/Index';
+import Image from 'next/image';
 import InfiniteText from '@src/components/animationComponents/infiniteText/Index';
 import clsx from 'clsx';
 import { gsap } from 'gsap';
 import styles from '@src/pages/components/home/styles/home.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
+import useScroll from '@src/hooks/useScroll';
 
 const moveRect = (rect, direction, gridWidth, gridHeight) => {
   const moveMap = {
@@ -80,6 +82,9 @@ function Home() {
   const svgRef = useRef();
   const divWrapper = useRef();
   const infiniteTextRef = useRef();
+  const leftContainerRef = useRef();
+  const rightContainerRef = useRef();
+  const photoContainerRef = useRef();
 
   const initialPositions = useMemo(
     () =>
@@ -200,10 +205,62 @@ function Home() {
           opacity: 0,
           duration: 0.6,
         });
+
+      if (!isMobile) {
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: rootRef.current,
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1, // Add 1s smoothing to the scrub for elasticity
+              scroller: document.querySelector('main'),
+              invalidateOnRefresh: true,
+            },
+          })
+          .to(leftContainerRef.current, { yPercent: 15, ease: 'none' }, 0)
+          .to(rightContainerRef.current, { yPercent: 30, ease: 'none' }, 0)
+          .to(photoContainerRef.current, { yPercent: 45, ease: 'none' }, 0)
+          .to(svgRef.current, { yPercent: -10, ease: 'none' }, 0);
+      }
     });
 
     return () => ctx.kill();
-  }, []);
+  }, [isMobile]);
+
+  useScroll(
+    (e) => {
+      if (!isMobile) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        const v = Math.abs(e.velocity || 0);
+
+        // Extremely subtle scale effect
+        const textScale = 1 + Math.min(v * 0.001, 0.02); // max 1.02
+        const photoScale = 1 + Math.min(v * 0.002, 0.04); // max 1.04
+
+        if (leftContainerRef.current && rightContainerRef.current) {
+          gsap.to([leftContainerRef.current, rightContainerRef.current], {
+            scale: textScale,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+
+        if (photoContainerRef.current) {
+          gsap.to(photoContainerRef.current, {
+            scale: photoScale,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+      }
+    },
+    [isMobile],
+  );
 
   const onMouseEnter = () => {
     gsap.to(svgRef.current, { autoAlpha: 0 });
@@ -224,14 +281,22 @@ function Home() {
   return (
     <section ref={rootRef} className={clsx(styles.root)}>
       <div className={clsx(styles.topContainer, 'layout-grid-inner')}>
-        <div className={styles.leftContainer}>
-          <h2 className="h2">Remarkable</h2>
-          <h2 className={clsx('h2', 'bold')}>Virtual Experiences</h2>
+        <div ref={leftContainerRef} className={styles.leftContainer}>
+          <h2 className="h2">ENGINEER × DEVELOPER</h2>
+          <h2 className={clsx('h2', 'bold')}>× BUILDER</h2>
         </div>
         {!isMobile && (
-          <h6 className={clsx('h6', styles.rightContainer)}>
-            With years of experience, I create immersive digital environments that elevate your virtual presence. Join me in redefining digital interaction.
-          </h6>
+          <>
+            <div ref={photoContainerRef} className={styles.photoContainer}>
+              <Image src="/images/yash-chavan.jpeg" alt="Yash Chavan" fill style={{ objectFit: 'cover' }} priority />
+            </div>
+            <div ref={rightContainerRef} className={clsx(styles.rightContainer)}>
+              <p className={clsx('p-l', 'bold')} style={{ marginBottom: '1rem', color: 'var(--secondary-text, #A0A0A0)' }}>
+                Exploring intelligent systems, AI, and experimental technology.
+              </p>
+              <h6 className="h6">I am a Mechatronics Engineering student and developer focused on building intelligent systems and pushing the boundaries of experimental technology.</h6>
+            </div>
+          </>
         )}
       </div>
 
@@ -250,12 +315,18 @@ function Home() {
       </div>
       {isMobile && (
         <div className={styles.rightContainerMobile}>
-          <h6 className="h6"> With years of experience, I create immersive digital environments that elevate your virtual presence. Join me in redefining digital interaction.</h6>
+          <div className={styles.photoContainerMobile}>
+            <Image src="/images/yash-chavan.jpeg" alt="Yash Chavan" fill style={{ objectFit: 'cover' }} priority />
+          </div>
+          <p className={clsx('p-l', 'bold')} style={{ marginBottom: '1rem', color: 'var(--secondary-text, #A0A0A0)' }}>
+            Exploring intelligent systems, AI, and experimental technology.
+          </p>
+          <h6 className="h6">I am a Mechatronics Engineering student and developer focused on building intelligent systems and pushing the boundaries of experimental technology.</h6>
         </div>
       )}
 
       <div ref={infiniteTextRef} className={styles.infiniteContainer}>
-        <InfiniteText text="Scroll Down" length={5} />
+        <InfiniteText text="BUILD • EXPLORE • ENGINEER • EXPERIMENT • " length={3} />
       </div>
     </section>
   );

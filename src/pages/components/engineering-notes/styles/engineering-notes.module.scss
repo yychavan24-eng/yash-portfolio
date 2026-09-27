@@ -1,0 +1,111 @@
+@import '@src/styles/functions';
+
+.root {
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--layout-columns-gap) * 8);
+  padding-bottom: calc(var(--layout-columns-gap) * 8);
+  color: var(--black);
+
+  .titleContainer {
+    grid-column: 3 / 15;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(var(--layout-columns-gap) * 4);
+
+    @include mobile {
+      grid-column: 2 / 6;
+      margin-bottom: calc(var(--layout-columns-gap) * 2);
+    }
+  }
+
+  .notesContainer {
+    grid-column: 3 / 15;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--layout-columns-gap) * 3);
+
+    @include mobile {
+      grid-column: 2 / 6;
+      gap: calc(var(--layout-columns-gap) * 2);
+    }
+
+    // Micro-interaction: quiet non-hovered items
+    @media (hover: hover) {
+      &:hover .note {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .note {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.4s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1 !important;
+        
+        .answer {
+          opacity: 1;
+        }
+
+        .questionTitle {
+          color: var(--black);
+        }
+      }
+    }
+
+    .questionHeader {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--layout-columns-gap) * 0.25);
+      margin-bottom: calc(var(--layout-columns-gap) * 1);
+      
+      .questionId {
+        font-family: var(--font-primary);
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--secondary-text, #A0A0A0);
+      }
+      
+      .questionTitle {
+        text-transform: uppercase;
+        color: var(--secondary-text, #A0A0A0);
+        letter-spacing: 0.02em;
+        transition: color 0.4s ease;
+
+        @include mobile {
+          color: var(--black); // full contrast on mobile by default
+        }
+      }
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: var(--black);
+      margin-bottom: calc(var(--layout-columns-gap) * 1);
+      opacity: 0.15;
+    }
+
+    .answer {
+      color: var(--black);
+      font-weight: 500;
+      opacity: 0.6; // restrained default state
+      transition: opacity 0.4s ease;
+      
+      @include mobile {
+        opacity: 1; // fully visible on mobile
+      }
+      
+      p {
+        max-width: 80%;
+        @include mobile {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@import '@src/styles/functions';
+
+.root {
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--layout-columns-gap) * 8);
+  padding-bottom: calc(var(--layout-columns-gap) * 8);
+  color: var(--black);
+
+  .titleContainer {
+    grid-column: 3 / 15;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(var(--layout-columns-gap) * 4);
+
+    @include mobile {
+      grid-column: 2 / 6;
+      margin-bottom: calc(var(--layout-columns-gap) * 2);
+    }
+  }
+
+  .subtitle {
+    margin-top: calc(var(--layout-columns-gap) * 0.5);
+    color: var(--secondary-text, #A0A0A0);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    max-width: 80%;
+
+    @include mobile {
+      max-width: 100%;
+    }
+  }
+
+  .domainsContainer {
+    grid-column: 3 / 15;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--layout-columns-gap) * 4);
+
+    @include mobile {
+      grid-column: 2 / 6;
+      gap: calc(var(--layout-columns-gap) * 2.5);
+    }
+
+    // Micro-interaction: quiet non-hovered items
+    @media (hover: hover) {
+      &:hover .domain {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .domain {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.4s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1 !important;
+      }
+    }
+
+    .domainHeader {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--layout-columns-gap) * 0.25);
+      margin-bottom: calc(var(--layout-columns-gap) * 0.5);
+
+      .domainId {
+        font-family: var(--font-primary);
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--secondary-text, #A0A0A0);
+      }
+      
+      .domainTitle {
+        text-transform: uppercase;
+        color: var(--black);
+        letter-spacing: 0.02em;
+      }
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: var(--black);
+      margin-bottom: calc(var(--layout-columns-gap) * 1.5);
+      opacity: 0.15;
+      
+      @include mobile {
+        margin-bottom: calc(var(--layout-columns-gap) * 1);
+      }
+    }
+
+    .domainContent {
+      display: flex;
+      flex-direction: row;
+      gap: calc(var(--layout-columns-gap) * 2);
+      
+      @include mobile {
+        flex-direction: column;
+        gap: calc(var(--layout-columns-gap) * 0.75);
+      }
+
+      .domainKeywords {
+        flex: 1;
+        color: var(--black);
+        font-weight: 500;
+        
+        p {
+          max-width: 90%;
+          @include mobile {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .domainDescription {
+        flex: 1;
+        color: var(--secondary-text, #A0A0A0);
+        
+        p {
+          max-width: 90%;
+          @include mobile {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

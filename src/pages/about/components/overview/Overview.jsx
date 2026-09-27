@@ -53,7 +53,7 @@ function Overview() {
             <h6 className="h6">rowing, and playing intense PC games to relax and recharge.</h6>
 
             <h6 className={clsx(styles.paddingTop, 'h6')}>I&apos;m looking forward to collaborating and creating something great!</h6>
-            <h6 className={clsx(styles.paddingTop, 'h6')}>Evangelos Giatsidis.</h6>
+            <h6 className={clsx(styles.paddingTop, 'h6')}>Yash Chavan.</h6>
           </AppearTitle>
         ) : (
           <AppearTitle key="mobile-overview">
@@ -70,7 +70,7 @@ function Overview() {
             <h6 className="h6">and recharge.</h6>
             <h6 className={clsx(styles.paddingTop, 'h6')}>I&apos;m looking forward to collaborating and creating something</h6>
             <h6 className="h6">great!</h6>
-            <h6 className={clsx(styles.paddingTop, 'h6')}>Evangelos Giatsidis.</h6>
+            <h6 className={clsx(styles.paddingTop, 'h6')}>Yash Chavan.</h6>
           </AppearTitle>
         )}
       </div>

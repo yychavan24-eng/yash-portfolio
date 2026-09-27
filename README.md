@@ -1,23 +1,14 @@
-![giats.me cover](/public/og.png)
+# yash-portfolio
 
-# giats.me — Personal Portfolio Website
+This is the repository for the personal portfolio of **Yash Chavan**.
 
-This is the **original source code** for [giats.me](https://giats.me), the personal portfolio website of **Evangelos Giatsidis**.
-
-I designed and built this project from scratch using modern web technologies to push the creative limits of front-end development. The site blends smooth animation, layered visuals, and technical precision to present my work in a unique and immersive way.
-
-> 🏆 **Multi-award-winning site, featured on major design platforms**:
->
-> - 🥇 [CSS Design Awards — WOTD + 3 Special Kudos](https://www.cssdesignawards.com/sites/giats-portfolio/46067/)
-> - 🥈 [Awwwards — Honorable Mention](https://www.awwwards.com/sites/https-giats-me)
-> - 🥉 [GSAP — Site of the Day](https://gsap.com/showcase/?page=1)
+It is built around a robust GSAP animation system and Three.js backgrounds, originally derived from the Giats portfolio template.
 
 ---
 
-## ⭐ Show Some Love
+## ⭐ About
 
-If you find this project useful, inspiring, or just cool, please consider giving it a star on GitHub!  
-Your support helps me keep improving and sharing my work. Thank you! 🙏
+This portfolio serves as a technical workspace and showcase for Mechatronics Engineering and Development projects.
 
 ---
 
@@ -73,10 +64,8 @@ You are welcome to learn from or build upon this project, but **do not claim it 
 
 ## 📬 Contact
 
-- 📧 Email: [vaggelisgiats@gmail.com](mailto:vaggelisgiats@gmail.com)
-- 💼 LinkedIn: [linkedin.com/in/giats](https://www.linkedin.com/in/giats/)
-- 🌐 Website: [giats.me](https://giats.me)
-- 🐦 X (Twitter): [@Giats\_](https://x.com/Giats_)
+- 📧 Email: [yash.chavan@gmail.com](mailto:yash.chavan@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/yash-chavan](https://www.linkedin.com/in/yash-chavan/)
 
 ---
 

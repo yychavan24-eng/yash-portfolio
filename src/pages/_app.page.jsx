@@ -53,7 +53,12 @@ function MyApp({ Component, pageProps, router }) {
   const layoutRef = useRef();
 
   useFoucFix();
-  useScroll(() => ScrollTrigger.update());
+  useScroll((e) => {
+    ScrollTrigger.update();
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--scroll-velocity', Math.abs(e.velocity || 0));
+    }
+  });
 
   useIsomorphicLayoutEffect(() => {
     // eslint-disable-next-line no-shadow
