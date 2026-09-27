@@ -31,7 +31,7 @@ function PreFooter() {
 
         <div className={styles.linksContainer}>
           <AppearTitle>
-            <LinkText className={styles.link} title="EMAIL" href="mailto:yash.chavan@gmail.com">
+            <LinkText className={styles.link} title="EMAIL" href="mailto:yychavan24@gmail.com">
               <span className="h5">EMAIL</span>
             </LinkText>
           </AppearTitle>

@@ -102,7 +102,7 @@ function Footer() {
         <AppearTitle isFooter>
           <h6 className={clsx(styles.title, 'h6')}>SOCIAL</h6>
           <div className={styles.linkTextContainer}>
-            <LinkText className={styles.linkText} title="EMAIL" href="mailto:yash.chavan@gmail.com">
+            <LinkText className={styles.linkText} title="EMAIL" href="mailto:yychavan24@gmail.com">
               <span className="footer">EMAIL</span>
             </LinkText>
           </div>
